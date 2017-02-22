@@ -1,7 +1,7 @@
 class VisitorsController < ApplicationController
 
   def new
-  @visitor = Visitor.new
+    @visitor = Visitor.new
   end
 
   def create
@@ -10,15 +10,14 @@ class VisitorsController < ApplicationController
       @visitor.subscribe
       flash[:notice] = "Signed up #{@visitor.email}."
       redirect_to root_path
-      else
-        render :new
-      end
+    else
+      render :new
+    end
   end
 
   private
-
   def secure_params
     params.require(:visitor).permit(:email)
   end
-  
+
 end
